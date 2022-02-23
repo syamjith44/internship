@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<section class="p-5">
+    <div class="container">
+        <div class="text-center text-warning">
+            <p>You have searched for: <b>"{{query}}"</b></p>
+        </div>
+    </div>
+</section>
+
+<section class="p-5">
+    <div class="row">
+        {% for movie in movies %}
+        <div class="col-md-4 col-lg-3 p-4">
+
+            <div class="card bg-dark" style="width:-webkit-fill-available;">
+                <img alt="Card image cap" class="card-img-top" height="350px" src="{{movie.image.url}}">
+                <div class="card-body">
+                    <h5 class="card-title text-warning">{{movie.title}}</h5>
+                    <p class="card-text text-warning">{{movie.year}}</p>
+                    <a class="btn btn-outline-warning" href="{{movie.get_url}}">More Details</a>
+                </div>
+            </div>
+
+        </div>
+        {% empty %}
+        <div class="text-center text-warning">
+            <p><b>" No results found "</b></p>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+{% endblock %}

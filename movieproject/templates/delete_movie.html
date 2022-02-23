@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="row ">
+  <div class="d-flex justify-content-center p-5">
+      <div class="">
+          <div class="card bg-dark" style="width: 18rem;">
+              <div class="card-body bg-dark">
+                  <form method="post">
+                      {% csrf_token %}
+                      <h5 class="card-title text-warning">Delete Movie</h5>
+                      <p class="card-text text-warning">Are you Sure you Want to delete the movie</p>
+                      <button type="submit" class="btn btn-danger">Delete</button>
+                      <a href="{{request.META.HTTP_REFERER}}" class="btn btn-warning">Go Back</a>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+{% endblock %}

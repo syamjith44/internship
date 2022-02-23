@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="row ">
+    <div class="d-flex justify-content-center p-5">
+        <div class="">
+            <div class="card bg-dark" style="width: 18rem;">
+                <div class="card-body">
+                    <h4 class="card-title text-warning">Add New Movie</h4>
+                    <form enctype="multipart/form-data" method="post">
+                        {% csrf_token %}
+                        <div class="form-group bg-dark">
+                            <label class="text_warning" for="title">Movie Name</label>
+                            <input class="form-control" id="title" name="title" placeholder="Enter Movie Name"
+                                   type="text">
+                        </div>
+                        <div class="form-group bg-dark">
+                            <label class="text_warning" for="year">Year</label>
+                            <input class="form-control" id="year" name="year" placeholder="Enter Movie Year"
+                                   type="text">
+                        </div>
+                        <div class="form-group bg-dark">
+                            <label class="text_warning" for="image">Poster</label>
+                            <input class="form-control" id="image" name="image" placeholder="Upload Movie Poster"
+                                   type="file">
+                        </div>
+                        <br>
+                        <div class="form-group bg-dark">
+                            <select aria-label="Default select example" name="category" class="form-select">
+                                <option selected>Select movie category</option>
+                                {% for category in category_links %}
+                                <option value="{{category.title}}">{{category.title}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group bg-dark">
+                            <label class="label label_warning" for="description">Description</label>
+                            <textarea class="form-control" id="description" name="description"
+                                      placeholder="Enter Movie Description" rows="3">
+
+                            </textarea>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label for="button"> </label>
+                            <button class="btn btn-warning" id="button" type="submit">Submit</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
